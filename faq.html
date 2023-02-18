@@ -24,29 +24,112 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
-.accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
+/*new*/
+/*.container {
+  margin: 0 auto;
+  padding: 4rem;
+  width: 48rem;
+}*/
+
+.accordion .accordion-item {
+  border-bottom: 1px solid white;
+   padding: 1rem;
+   background-color:#BFEFFF;
+ 
+}
+.accordion .accordion-item button[aria-expanded=true] {
+  border-bottom: 0px solid skyblue;
+}
+.accordion button {
+  position: relative;
+  display: block;
   text-align: left;
+  width: 100%;
+  padding: 0em 0;
+  color: black;
+  
+  font-size: 1.15rem;
+  font-weight: 900;
+  border: none;
+  background: none;
   outline: none;
-  font-size: 15px;
-  transition: 0.4s;
 }
-
-.sort, .accordion:hover {
-  background-color: #ccc; 
+.accordion button:hover, .accordion button:focus {
+  cursor: pointer;
+  color: black;
+  font-weight: bolder;
 }
-
-.panel {
-  padding: 0 18px;
-  display: none;
-  background-color: white;
+.accordion button:hover::after, .accordion button:focus::after {
+  cursor: pointer;
+  color: black;
+  border: 1px solid #020668;
+}
+.accordion button .accordion-title {
+  padding: 1em 1.5em 1em 0;
+}
+.accordion button .icon {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 22px;
+}
+.accordion button .icon::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+}
+.accordion button .icon::after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+.accordion button[aria-expanded=true] {
+  color: black;
+  font-weight: bolder;
+}
+.accordion button[aria-expanded=true] .icon::after {
+  width: 0;
+}
+.accordion button[aria-expanded=true] + .accordion-content {
+  opacity: 1;
+  max-height: 10em;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+  font-weight: bolder;
+}
+.accordion .accordion-content {
+  opacity: 0;
+  max-height: 0;
   overflow: hidden;
+  transition: opacity 200ms linear, max-height 200ms linear;
+  will-change: opacity, max-height;
+  color: black;
+  font-weight: bolder;
+  line-height: 1.8;
+  font-size: 18px
 }
+.accordion .accordion-content p {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 2em 0;
+  color: #020668;
+
+}
+
 </style>
 </head>
 
@@ -165,122 +248,94 @@ new google.translate.TranslateElement({pageLanguage: 'en', layout: google.transl
     <!-- Navbar End -->
 
 
-
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 mt-2" >
-<h2 class="text-center">FAQ?</h2>
-
-<button class="accordion  mt-2" style="background-color:skyblue; color: black   ; font-weight: bolder;">1.There are many Digital Marketing agencies online. Why should I choose Ontogen Digital to work with?
-</button>
-<div class="panel" style="color:black;">
-  <p style="text-align:justify;">As mentioned on our website, Ontogen Digital is a pioneer digital marketing agency in Pune that works with the creative mindsets of a modern expertise team. As of now, we worked with lots of clients and supported them with various digital marketing tools to grow their businesses. While working, we faced many challenges but we happily concluded the various digital marketing  solutions and completed every important task to achieve the top results.If you trust us, we can assure you that you will never get disappointed. We have the best of the best marketing strategies and innovative tools to provide you with 10x more beneficial results.
-</p>
-</div></div>
-
- <div class="col-lg-12 mt-3 ">
-<button class="accordion "style="background-color:skyblue; color: black ; font-weight: bolder;">2.What different strategies do we use compared to other Digital Marketing agencies?
-</button>
-<div class="panel" style="color:black;">
-  <p style="text-align:justify;">When you trust upon us, it's our responsibility to handle the entire process to promote your brand or service. Our expertise pays attention to the minute details to grow your business worldwide. We use creative marketing strategies and campaigns to excel your brand ten times more innovative than your competitors. Once you have outsourced your all digital marketing work to us, you don't need to follow up continuously. You keep focusing on your business and we will take care of the digital marketing with on-record details to provide you from time to time.
-</p>
-</div>
-</div>
- <div class="col-lg-12 mt-3">
-<button class="accordion "style="background-color:skyblue; color: black ; font-weight: bolder;">3.Does Ontogen Digital supports startup companies with innovative Digital Marketing strategies?
-</button>
-<div class="panel" style="color:black;">
-  <p style="text-align:justify;">Definitely Yes! We would like to work with startup companies, regardless of the size or the sector of the company. We have many clients including SMEs, big brands, and startups. We helped many start-up firms to achieve their dream goals in digital marketing with affordable budgets.
-</p>
-</div>
-</div>
- 
-
-
-<div class="col-lg-12 mt-3">
-<button class="accordion "style="background-color:skyblue; color: black ; font-weight: bolder;">4.How do you determine the performance of digital marketing efforts?
-
-</button>
-<div class="panel" style="color:black;">
-  <p style="text-align:justify;">We measure the efforts of our IMC campaign with the help of KPI(Key Performance Indicator).<br>
+<div class="container mt-5">
+  <h2 class="text-center" style="font-size:50px; color:#020668 ;font-weight: bold;">FAQ's</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button id="accordion-button-1" aria-expanded="false"><h5 class="accordion-title" style="font-size:25px">1.There are many Digital Marketing agencies online. Why should I choose Ontogen Digital to work with?</h5><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <h6 style="font-size: 22px;line-height: 1.6;">As mentioned on our website, Ontogen Digital is a pioneer digital marketing agency in Pune that works with the creative mindsets of a modern expertise team. As of now, we worked with lots of clients and supported them with various digital marketing tools to grow their businesses. While working, we faced many challenges but we happily concluded the various digital marketing  solutions and completed every important task to achieve the top results.If you trust us, we can assure you that you will never get disappointed. We have the best of the best marketing strategies and innovative tools to provide you with 10x more beneficial results.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-2" aria-expanded="false"><h5 class="accordion-title" style="font-size:25px">2.What different strategies do we use compared to other Digital Marketing agencies?</h5><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <h6 style="font-size: 22px;line-height: 1.6;">When you trust upon us, it's our responsibility to handle the entire process to promote your brand or service. Our expertise pays attention to the minute details to grow your business worldwide. We use creative marketing strategies and campaigns to excel your brand ten times more innovative than your competitors. Once you have outsourced your all digital marketing work to us, you don't need to follow up continuously. You keep focusing on your business and we will take care of the digital marketing with on-record details to provide you from time to time.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-3" aria-expanded="false"><h5 class="accordion-title" style="font-size:25px">3.Does Ontogen Digital supports startup companies with innovative Digital Marketing strategies?</h5><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <h6 style="font-size: 22px;line-height: 1.6;">Definitely Yes! We would like to work with startup companies, regardless of the size or the sector of the company. We have many clients including SMEs, big brands, and startups. We helped many start-up firms to achieve their dream goals in digital marketing with affordable budgets.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-4" aria-expanded="false"><h5 class="accordion-title" style="font-size:25px">4.How do you determine the performance of digital marketing efforts?</h5><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <h6 style="font-size: 22px;line-height: 1.6;">We measure the efforts of our IMC campaign with the help of KPI(Key Performance Indicator).<br>
 -Keyword Ranking<br>
 -Brand Reach<br>
 -Measuring Organic Traffic<br>
--Organic Leads/Conversion<br>
-</p>
-</div>
-</div>
-
-<div class="col-lg-12 mt-3">
-<button class="accordion "style="background-color:skyblue; color: black ; font-weight: bolder;">5.What factors you must know before hiring a Digital Marketing Agency?
-
-</button>
-<div class="panel" style="color:black;">
-  <p style="text-align:justify;">In today's era, the world is constantly moving towards digital and if you are new to the scenario, we urge you to work with a Digital Marketing company that has worked with other brands before as well as your trust matters a lot! Trust the company that ensures that they will fulfill your expectations and work with you to grow your business. Other than this, it also depends on what you want to sell. Make your mindset first, try to research, and pick the best one, that's what we can suggest.
-
-</p>
-</div>
-</div>
-
-<div class="col-lg-12 mt-3">
-<button class="accordion "style="background-color:skyblue; color: black ; font-weight: bolder;">6.What do we offer with SEO marketing tools?
-
-</button>
-<div class="panel" style="color:black;">
-  <p style="text-align:justify;">Our Ontogen Digital team expertise uses white hat-SEO to promote your brands. It helps to improve the ranking of your website. Otherwise, there are many other ways to drive traffic but those are unethical and effortless sometimes. We will analyze and rephrase all the content adding keywords and backlinks to drive more traffic to your website. 
-</p>
-</div>
-</div>
-
-<div class="col-lg-12 mt-3">
-<button class="accordion "style="background-color:skyblue; color: black ; font-weight: bolder;">
-7.Tell me the first step you will carry forward to grow our Digital Marketing Agency.
-
-</button>
-<div class="panel" style="color:black;">
-  <p style="text-align:justify;">We will suggest that First of all, start from the basics and then expand from there. It's very essential to generate your website traffic. You can do it by taking the help of SEO, PPC, and using various Social Media Platforms. Once visitors start coming to your website, you are ready to fire your appeal towards them. You can do this by generating relevant and informative content.
-</p>
-</div>
+-Organic Leads/Conversion<br></p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-4" aria-expanded="false"><h5 class="accordion-title" style="font-size:25px">5.What factors you must know before hiring a Digital Marketing Agency?</h5><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <h6 style="font-size: 22px;line-height: 1.6;">In today's era, the world is constantly moving towards digital and if you are new to the scenario, we urge you to work with a Digital Marketing company that has worked with other brands before as well as your trust matters a lot! Trust the company that ensures that they will fulfill your expectations and work with you to grow your business. Other than this, it also depends on what you want to sell. Make your mindset first, try to research, and pick the best one, that's what we can suggest.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-4" aria-expanded="false"><h5 class="accordion-title" style="font-size:25px">6.What do we offer with SEO marketing tools?</h5><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <h6 style="font-size: 22px;line-height: 1.6;">Our Ontogen Digital team expertise uses white hat-SEO to promote your brands. It helps to improve the ranking of your website. Otherwise, there are many other ways to drive traffic but those are unethical and effortless sometimes. We will analyze and rephrase all the content adding keywords and backlinks to drive more traffic to your website. </p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-4" aria-expanded="false"><h5 class="accordion-title" style="font-size:25px">7.Tell me the first step you will carry forward to grow our Digital Marketing Agency.</h5><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <h6 style="font-size: 22px;line-height: 1.6;">We will suggest that First of all, start from the basics and then expand from there. It's very essential to generate your website traffic. You can do it by taking the help of SEO, PPC, and using various Social Media Platforms. Once visitors start coming to your website, you are ready to fire your appeal towards them. You can do this by generating relevant and informative content.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-5" aria-expanded="false"><h5 class="accordion-title" style="font-size:25px">8.Direct Meeting is possible or not?</h5><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <h6 style="font-size: 22px;line-height: 1.6;">Why not? We feel confident when someone appreciates us. We keep meeting our clients once in a month and our operation manager gives them detailed information by creating a PPT presentation on whatever work is done.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="col-lg-12 mt-3">
-<button class="accordion "style="background-color:skyblue; color: black ; font-weight: bolder;">8.Direct Meeting is possible or not?
 
-</button>
-<div class="panel" style="color:black;">
-  <p style="text-align:justify;">
-Why not? We feel confident when someone appreciates us. We keep meeting our clients once in a month and our operation manager gives them detailed information by creating a PPT presentation on whatever work is done.
 
-</p>
-</div>
-</div>
 
-</div></div>
+
+
 
 <div class="col-lg-12  py-5 mb-5">
-<h5 class="text-center">Can't find the answer that you were looking for?
+<h5 class="text-center" style="font-size:22px;line-height:1.5">Can't find the answer that you were looking for?
 <br><a href="tel:+8999432554" target="_blank"><span style="margin-top:2rem;">Then please contact us: <i class="bi bi-telephone text-primary" ></i>+91 8999432554</span></a>
 </h5></h5>
 </div>
 
 <script>
-var acc = document.getElementsByClassName("accordion");
-var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("sort");
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
+// new
+const items = document.querySelectorAll(".accordion button");
+
+function toggleAccordion() {
+  const itemToggle = this.getAttribute('aria-expanded');
+  
+  for (i = 0; i < items.length; i++) {
+    items[i].setAttribute('aria-expanded', 'false');
+  }
+  
+  if (itemToggle == 'false') {
+    this.setAttribute('aria-expanded', 'true');
+  }
 }
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
 </script>
 
 

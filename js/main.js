@@ -7,33 +7,59 @@
             $('.navbar').removeClass('sticky-top');
         }
     });
+    $(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+
+// breakpoint and up  
+$(window).resize(function(){
+    if ($(window).width() >= 980){  
+
+      // when you hover a toggle show its dropdown menu
+      $(".navbar .dropdown-toggle").hover(function () {
+         $(this).parent().toggleClass("show");
+         $(this).parent().find(".dropdown-menu").toggleClass("show"); 
+       });
+
+        // hide the menu when the mouse leaves the dropdown
+      $( ".navbar .dropdown-menu" ).mouseleave(function() {
+        $(this).removeClass("show");  
+      });
+  
+        // do something here
+    }   
+});  
+  
+  
+
+// document ready  
+});
     
-    // Dropdown on mouse hover
-    const $dropdown = $(".dropdown");
-    const $dropdownToggle = $(".dropdown-toggle");
-    const $dropdownMenu = $(".dropdown-menu");
-    const showClass = "show";
+    // // Dropdown on mouse hover
+    // const $dropdown = $(".dropdown");
+    // const $dropdownToggle = $(".dropdown-toggle");
+    // const $dropdownMenu = $(".dropdown-menu");
+    // const showClass = "show";
     
-    $(window).on("load resize", function() {
-        if (this.matchMedia("(min-width: 992px)").matches) {
-            $dropdown.hover(
-            function() {
-                const $this = $(this);
-                $this.addClass(showClass);
-                $this.find($dropdownToggle).attr("aria-expanded", "true");
-                $this.find($dropdownMenu).addClass(showClass);
-            },
-            function() {
-                const $this = $(this);
-                $this.removeClass(showClass);
-                $this.find($dropdownToggle).attr("aria-expanded", "false");
-                $this.find($dropdownMenu).removeClass(showClass);
-            }
-            );
-        } else {
-            $dropdown.off("mouseenter mouseleave");
-        }
-    });
+    // $(window).on("load resize", function() {
+    //     if (this.matchMedia("(min-width: 992px)").matches) {
+    //         $dropdown.hover(
+    //         function() {
+    //             const $this = $(this);
+    //             $this.addClass(showClass);
+    //             $this.find($dropdownToggle).attr("aria-expanded", "true");
+    //             $this.find($dropdownMenu).addClass(showClass);
+    //         },
+    //         function() {
+    //             const $this = $(this);
+    //             $this.removeClass(showClass);
+    //             $this.find($dropdownToggle).attr("aria-expanded", "false");
+    //             $this.find($dropdownMenu).removeClass(showClass);
+    //         }
+    //         );
+    //     } else {
+    //         $dropdown.off("mouseenter mouseleave");
+    //     }
+    // });
     
     
     // Back to top button
